@@ -2,7 +2,14 @@ FROM debian:jessie
 
 RUN apt-get update
 
-RUN apt-get install -y apache2 curl git mysql-client php5 php5-mysql php5-curl php5-xdebug php5-gd vim wget
+RUN apt-get install -y wget
+
+RUN echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list && \
+    echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list && \
+    wget -qO - https://www.dotdeb.org/dotdeb.gpg | apt-key add - && \
+    apt-get update
+
+RUN apt-get install -y apache2 curl git mysql-client php7.0 php7.0-mbstring php7.0-mysql php7.0-curl php7.0-xdebug php7.0-gd php7.0-xml vim
 
 RUN a2enmod rewrite
 
