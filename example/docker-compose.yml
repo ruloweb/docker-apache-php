@@ -1,0 +1,8 @@
+server:
+  container_name: test
+  image: apache-php:latest
+  ports:
+    - "80"
+  volumes:
+    - ./www:/var/www/html
+    - ./default.conf:/etc/apache2/sites-enabled/000-default.conf
